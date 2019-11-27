@@ -1,13 +1,14 @@
-import fbchat 
+import fbchat
 from getpass import getpass 
-username = str(raw_input("Username: ")) 
+username = str(input("Username: ")) 
 client = fbchat.Client(username, getpass()) 
-no_of_friends = int(raw_input("Number of friends: ")) 
-for i in xrange(no_of_friends): 
-	name = str(raw_input("Name: ")) 
-	friends = client.getUsers(name) # return a list of names 
+no_of_friends = int(input("Number of friends: ")) 
+for i in range(0, no_of_friends): 
+	name = str(input("Name: ")) 
+	friends = client.getUserActiveStatus(name) # a retravailler
 	friend = friends[0] 
-	msg = str(raw_input("Message: ")) 
+	msg = str(input("Message: ")) 
 	sent = client.send(friend.uid, msg) 
 	if sent: 
 		print("Message sent successfully!") 
+
